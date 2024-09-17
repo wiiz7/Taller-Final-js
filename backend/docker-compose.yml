@@ -1,0 +1,35 @@
+version: '3.8'
+services:
+  # Servicio para tu aplicación Node.js
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '3001:3001'
+    environment:
+      - DB_HOST=db
+      - DB_USER=root
+      - DB_PASSWORD=root
+      - DB_NAME=galactico
+      - SESSION_SECRET=your_session_secret
+    depends_on:
+      - db
+    volumes:
+      - .:/usr/src/app
+    command: npm run dev
+  
+  # Servicio para MySQL
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: galactico
+    volumes:
+      - db_data:/var/lib/mysql
+    ports:
+      - '3306:3306'
+
+# Define un volumen para la persistencia de los datos de MySQL
+volumes:
+  db_data:

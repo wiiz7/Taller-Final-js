@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "target": "es6",
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "strict": true,
+    "typeRoots": ["./node_modules/@types", "./types"], // Asegúrate de que está correcto
+    "types": ["node", "express"],
+    "skipLibCheck": true
+  },
+  "include": ["src/**/*", "types/**/*"], // Incluye tu carpeta de tipos
+  "exclude": ["node_modules", "dist"]
+}
+
+
